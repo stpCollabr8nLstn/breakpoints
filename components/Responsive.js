@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Thing1, Thing2, Thing3 } from './Shared';
 
 const Container = styled.div`
     display: grid;
@@ -19,23 +20,11 @@ const Container = styled.div`
     }
 `;
 
-const Thing1 = styled.h1`
-    background: pink;
-`;
-
-const Thing2 = styled.div`
-    background: rebeccapurple;
-`;
-
-const Thing3 = styled.div`
-    background: teal;
-`;
-
 const Responsive = () => (
     <Container>
-        <Thing1>Thing 1</Thing1>
-        <Thing2>Thing 2</Thing2>
-        <Thing3>Thing 3</Thing3>
+        <Thing1><h1>Header</h1></Thing1>
+        <Thing2>Image</Thing2>
+        <Thing3>Content</Thing3>
     </Container>
 );
 

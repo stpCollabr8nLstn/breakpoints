@@ -3,16 +3,33 @@ import styled from 'styled-components';
 
 const Layout = styled.div`
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     padding: 40px;
-
+    color: #FBEBFB;
     font-size: 36px;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    background-image: radial-gradient(
+      circle at top left,
+      #8A0285,
+      #000 50%
+    );
 
     h1, h2, h3, h4 {
         text-align: center;
     }
 
-    code {
-        max-width: 100%;
+    h1 {
+        text-shadow: 4px 2px 10px #BFFCFC;
+    }
+
+    pre {
+        max-width: 75%;
+        max-height: 75%;
         font-size: 28px;
     }
 `;
