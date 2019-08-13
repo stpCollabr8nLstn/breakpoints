@@ -10,6 +10,12 @@ export const theme = themes.future;
 
 # Embrace Adaptive Design
 
+<Notes>
+<p>Adaptive design is an unavoidable painpoint</p>
+<p>As much as we aim for responsive designs have valid reasons for shifting
+or hiding content when moving between viewport sizes</p>
+</Notes>
+
 </Layout>
 
 ---
@@ -36,12 +42,16 @@ export const theme = themes.future;
 <Layout>
 
 ```jsx
-    <Container>
-        <h1>Thing 1</h1>
-        <Thing2>Thing 2</Thing2>
-        <Thing3>Thing 3</Thing3>
-    </Container>
+<Container>
+    <h1>Thing 1</h1>
+    <Thing2>Thing 2</Thing2>
+    <Thing3>Thing 3</Thing3>
+</Container>
 ```
+
+<Notes>
+    Here's what the markup looks like
+</Notes>
 
 </Layout>
 
@@ -51,14 +61,14 @@ export const theme = themes.future;
 
 ```css
 
-    const Container = styled.div`
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+const Container = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 
-        @media screen and (max-width: 768px) {
-            display: none;
-        }
-    `;
+    @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+`;
 ```
 
 </Layout>
@@ -77,16 +87,16 @@ export const theme = themes.future;
 <Layout>
 
 ```jsx
-    <Container>
-        <h1>Thing 1</h1>
-        <Thing2>Thing 2</Thing2>
-        <Thing3>Thing 3</Thing3>
-    </Container>
-    <MobileContainer>
-        <Thing2>Thing 2</Thing2>
-        <h1>Thing 1</h1>
-        <Thing3>Thing 3</Thing3>
-    </MobileContainer>
+<Container>
+    <h1>Thing 1</h1>
+    <Thing2>Thing 2</Thing2>
+    <Thing3>Thing 3</Thing3>
+</Container>
+<MobileContainer>
+    <Thing2>Thing 2</Thing2>
+    <h1>Thing 1</h1>
+    <Thing3>Thing 3</Thing3>
+</MobileContainer>
 ```
 
 </Layout>
@@ -97,28 +107,28 @@ export const theme = themes.future;
 
 ```css
 
-    const Container = styled.div`
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+const MobileContainer = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 
-        @media screen and (max-width: 768px) {
-            display: none;
-        }
-    `;
-
-    const MobileContainer = styled.div`
+    @media screen and (max-width: 768px) {
         display: none;
+    }
+`;
 
-        @media screen and (max-width: 768px) {
-            display: grid;
-            grid-template-columns: 1fr;
-            div {
-                padding: 16px;
-                margin: 4px;
-                border-radius: 2px;
-            }
+const Container = styled.div`
+    display: none;
+
+    @media screen and (max-width: 768px) {
+        display: grid;
+        grid-template-columns: 1fr;
+        div {
+            padding: 16px;
+            margin: 4px;
+            border-radius: 2px;
         }
-    `;
+    }
+`;
 ```
 
 </Layout>
@@ -191,17 +201,18 @@ const App = () => (
 import { Breakpoint } from 'react-socks';
 
 const MyNewComponent = () => (
-    <Breakpoint tablet down>
+    <Breakpoint desktop>
         <Container>
-            <h1>Thing 1</h1>
+            <Thing1>Thing 1</Thing1>
             <Thing2>Thing 2</Thing2>
             <Thing3>Thing 3</Thing3>
         </Container>
     </Breakpoint>
-    <Breakpoint desktop>
+        
+    <Breakpoint tablet down>
         <Container>
             <Thing2>Thing 2</Thing2>
-            <h1>Thing 1</h1>
+            <Thing1>Thing 1</Thing1>
             <Thing3>Thing 3</Thing3>
         </Container>
     </Breakpoint>
@@ -232,6 +243,8 @@ const Container = styled.div`
 <Layout>
 
 <Demo />
+
+<Notes>As a result you get cleaner renders and no duplicate content</Notes>
 
 </Layout>
 

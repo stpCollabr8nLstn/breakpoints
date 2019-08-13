@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
+const MobileContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 
@@ -19,7 +19,7 @@ const Container = styled.div`
     }
 `;
 
-const MobileContainer = styled.div`
+const Container = styled.div`
     display: none;
 
     @media screen and (max-width: 768px) {
@@ -48,13 +48,13 @@ const Thing3 = styled.div`
 const Adaptive = () => (
     <>
         <Container>
-            <Thing1>Thing 1</Thing1>
             <Thing2>Thing 2</Thing2>
+            <Thing1>Thing 1</Thing1>
             <Thing3>Thing 3</Thing3>
         </Container>
         <MobileContainer>
-            <Thing2>Thing 2</Thing2>
             <Thing1>Thing 1</Thing1>
+            <Thing2>Thing 2</Thing2>
             <Thing3>Thing 3</Thing3>
         </MobileContainer>
     </>
