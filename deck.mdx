@@ -1,83 +1,143 @@
-import { themes, Notes, SplitRight } from 'mdx-deck';
+import { themes, Notes } from 'mdx-deck';
+import Layout, { SplitLayout } from './components/Layout';
+import Responsive from './components/Responsive';
+import Adaptive from './components/Adaptive'
+import Demo from './components/Demo';
 
 export const theme = themes.future;
 
+<Layout>
+
 # Embrace Adaptive Design
 
----
-
-# Adaptive vs Responsive
+</Layout>
 
 ---
+
+<Layout>
 
 ## A quick review...
 
+</Layout>
+
 ---
 
-import Responsive from './components/Responsive'
+<Layout>
 
 <h3>Responsive Layout</h3>
 <Responsive />
 
 <Notes>Swap to mobile</Notes>
 
+</Layout>
+
 ---
 
+<Layout>
+
 ```jsx
-const Container = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-
-    div {
-        padding: 16px;
-        margin: 4px;
-        border-radius: 2px;
-    }
-
-    @media screen and (max-width: 768px) {
-        background: pink;
-        grid-template-columns: 1fr;
-    }
-`;
-
-const Thing1 = styled.h1`
-    background: pink;
-`;
-
-const Thing2 = styled.div`
-    background: rebeccapurple;
-`;
-
-const Thing3 = styled.div`
-    background: teal;
-`;
-
-const Responsive = () => (
     <Container>
-        <Thing1>Thing 1</Thing1>
+        <h1>Thing 1</h1>
         <Thing2>Thing 2</Thing2>
         <Thing3>Thing 3</Thing3>
     </Container>
-);
 ```
+
+</Layout>
+
 ---
 
-import Adaptive from './components/Adaptive'
+<Layout>
+
+```css
+
+    const Container = styled.div`
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        @media screen and (max-width: 768px) {
+            display: none;
+        }
+    `;
+```
+
+</Layout>
+
+---
+
+<Layout>
 
 <h3>Adaptive Layout</h3>
 <Adaptive />
 
+</Layout>
+
 ---
 
-![inspect adaptive code]()
+<Layout>
+
+```jsx
+    <Container>
+        <h1>Thing 1</h1>
+        <Thing2>Thing 2</Thing2>
+        <Thing3>Thing 3</Thing3>
+    </Container>
+    <MobileContainer>
+        <Thing2>Thing 2</Thing2>
+        <h1>Thing 1</h1>
+        <Thing3>Thing 3</Thing3>
+    </MobileContainer>
+```
+
+</Layout>
+
+---
+
+<Layout>
+
+```css
+
+    const Container = styled.div`
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        @media screen and (max-width: 768px) {
+            display: none;
+        }
+    `;
+
+    const MobileContainer = styled.div`
+        display: none;
+
+        @media screen and (max-width: 768px) {
+            display: grid;
+            grid-template-columns: 1fr;
+            div {
+                padding: 16px;
+                margin: 4px;
+                border-radius: 2px;
+            }
+        }
+    `;
+```
+
+</Layout>
+
+---
+
+<Layout>
 
 ### What's the issue here?
+
+<SplitLayout>
+
+![inspect adaptive code](https://github.com/stpCollabr8nLstn/breakpoints/blob/master/images/inspect_adaptive.png?raw=true)
 
 - Duplicate markup
 - SEO audits will flag duplicate/multiple h1s
 - Developer experience isn't always great
 
-
+</SplitLayout>
 
 <Notes>
     <h3>ScreamingFrog runs SEO audits</h3>
@@ -91,5 +151,94 @@ import Adaptive from './components/Adaptive'
     </ul>
 </Notes>
 
+</Layout>
+
 ---
 
+<Layout> 
+
+### Get your socks on!
+
+`react-socks` is here to help
+
+```jsx
+// App.js
+import { BreakpointProvider, setDefaultBreakpoints } from 'react-socks';
+
+// Set these once
+setDefaultBreakpoints([
+    { mobile: 0 },
+    { tablet: 401 },
+    { desktop: 769}
+]);
+
+// Wrap the app
+const App = () => (
+    <BreakpointProvider>
+        <MySuperDuperApp />
+    </BreakpointProvider>
+);
+
+```
+
+</Layout>
+
+--- 
+
+<Layout>
+
+```jsx
+import { Breakpoint } from 'react-socks';
+
+const MyNewComponent = () => (
+    <Breakpoint tablet down>
+        <Container>
+            <h1>Thing 1</h1>
+            <Thing2>Thing 2</Thing2>
+            <Thing3>Thing 3</Thing3>
+        </Container>
+    </Breakpoint>
+    <Breakpoint desktop>
+        <Container>
+            <Thing2>Thing 2</Thing2>
+            <h1>Thing 1</h1>
+            <Thing3>Thing 3</Thing3>
+        </Container>
+    </Breakpoint>
+);
+```
+
+</Layout>
+
+--- 
+
+<Layout>
+
+```css
+const Container = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+`;
+```
+
+</Layout>
+
+---
+
+<Layout>
+
+<Demo />
+
+</Layout>
+
+---
+
+<Layout>
+
+<h1> 🦄 Thanks for listening 💖 </h1>
+
+</Layout>
