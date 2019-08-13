@@ -1,0 +1,95 @@
+import { themes, Notes, SplitRight } from 'mdx-deck';
+
+export const theme = themes.future;
+
+# Embrace Adaptive Design
+
+---
+
+# Adaptive vs Responsive
+
+---
+
+## A quick review...
+
+---
+
+import Responsive from './components/Responsive'
+
+<h3>Responsive Layout</h3>
+<Responsive />
+
+<Notes>Swap to mobile</Notes>
+
+---
+
+```jsx
+const Container = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    div {
+        padding: 16px;
+        margin: 4px;
+        border-radius: 2px;
+    }
+
+    @media screen and (max-width: 768px) {
+        background: pink;
+        grid-template-columns: 1fr;
+    }
+`;
+
+const Thing1 = styled.h1`
+    background: pink;
+`;
+
+const Thing2 = styled.div`
+    background: rebeccapurple;
+`;
+
+const Thing3 = styled.div`
+    background: teal;
+`;
+
+const Responsive = () => (
+    <Container>
+        <Thing1>Thing 1</Thing1>
+        <Thing2>Thing 2</Thing2>
+        <Thing3>Thing 3</Thing3>
+    </Container>
+);
+```
+---
+
+import Adaptive from './components/Adaptive'
+
+<h3>Adaptive Layout</h3>
+<Adaptive />
+
+---
+
+![inspect adaptive code]()
+
+### What's the issue here?
+
+- Duplicate markup
+- SEO audits will flag duplicate/multiple h1s
+- Developer experience isn't always great
+
+
+
+<Notes>
+    <h3>ScreamingFrog runs SEO audits</h3>
+    <ul>
+        <li>Duplicate – Any pages which have duplicate h1.</li>
+        <li>Multiple – Any pages which have multiple h1.</li>
+    </ul>
+    <h3>DX</h3>
+    <ul>
+        <li>As teams grow the layout may be confusing for newcomers</li>
+    </ul>
+</Notes>
+
+---
+

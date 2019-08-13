@@ -1,0 +1,21 @@
+{
+  "name": "breakpoints",
+  "version": "1.0.0",
+  "description": "A presentation on how to use responsible breakpoints",
+  "main": "index.js",
+  "repository": "https://github.com/stpCollabr8nLstn/breakpoints.git",
+  "author": "🦄 Adriana Rios 💖",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "mdx-deck deck.mdx",
+    "build": "mdx-deck build deck.mdx"
+  },
+  "dependencies": {
+    "@mdx-deck/themes": "^3.0.8",
+    "mdx-deck": "^3.0.9",
+    "react": "^16.9.0",
+    "react-socks": "^2.0.2",
+    "styled-components": "^4.3.2"
+  }
+}
